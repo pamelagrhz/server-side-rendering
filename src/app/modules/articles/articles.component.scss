@@ -1,0 +1,12 @@
+section.articles {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 400px;
+	margin: 0 auto;
+	.card{
+		margin: 20px auto;
+		.title{
+			cursor: pointer;
+		}
+	}
+}
