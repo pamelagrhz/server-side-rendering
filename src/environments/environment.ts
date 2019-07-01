@@ -4,6 +4,7 @@
 const URL_BASE = 'https://jsonplaceholder.typicode.com/';
 export const environment = {
   production: false,
+  site_url: 'http://localhost:4200/',
   articles: URL_BASE + 'posts'
 };
 

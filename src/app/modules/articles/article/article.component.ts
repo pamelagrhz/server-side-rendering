@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { MetaService } from 'src/app/shared/services/meta.service';
+
 import { ArticlesService } from '../articles.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-article',
@@ -10,11 +12,12 @@ import { ArticlesService } from '../articles.service';
 })
 export class ArticleComponent implements OnInit {
 
-  public article: Object = {};
+  public article: any = {};
 
   constructor(
     private route: ActivatedRoute,
-    private service: ArticlesService
+    private service: ArticlesService,
+    private meta: MetaService
   ) { }
 
   ngOnInit() {
@@ -27,6 +30,9 @@ export class ArticleComponent implements OnInit {
       this.service.getById(id).then(
         article => {
           this.article = article;
+          this.article.img = environment.site_url + `assets/${(Math.floor(Math.random() * 3)).toString()}.jpeg`;
+          this.meta.updateTitle(this.article.title, this.article.body);
+          this.meta.updateMetaFB(this.article.title, this.article.img, this.article.body);
         }
       );
     }
