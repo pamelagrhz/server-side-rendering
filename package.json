@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng build",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -14,8 +14,7 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run ssr:server:production",
-    "postinstall": "ng build"
+    "build:client-and-server-bundles": "ng build --prod && ng run ssr:server:production"
   },
   "private": true,
   "dependencies": {
